@@ -1,0 +1,11 @@
+java.lang.IllegalArgumentException: Host name may not be null
+	at org.apache.http.HttpHost.<init>(HttpHost.java:83)
+	at org.apache.http.impl.client.AbstractHttpClient.determineTarget(AbstractHttpClient.java:586)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:576)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:554)
+	at com.sylob.cochise.composant.printmanager.datasource.RemoteQueryExecuter.connectVersionSylobAnterieureS9_1_3(RemoteQueryExecuter.java:111)
+	at com.sylob.cochise.composant.printmanager.datasource.RemoteQueryExecuter.connect(RemoteQueryExecuter.java:94)
+	at com.sylob.cochise.composant.printmanager.datasource.RemoteQueryExecuter.<init>(RemoteQueryExecuter.java:70)
+	at com.sylob.cochise.composant.printmanager.ireport.SylobDataSourceConnection.getJRDataSource(SylobDataSourceConnection.java:234)
+	at it.businesslogic.ireport.IReportCompiler.run(IReportCompiler.java:972)
+	at java.lang.Thread.run(Unknown Source)

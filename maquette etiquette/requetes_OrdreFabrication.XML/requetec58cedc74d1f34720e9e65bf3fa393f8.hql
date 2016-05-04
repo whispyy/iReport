@@ -1,0 +1,1 @@
+select condition from ConditionClientEntite condition where condition.article.id='4028bb8a508d7e990150b4aea2d847d0' and condition.client.id='null'

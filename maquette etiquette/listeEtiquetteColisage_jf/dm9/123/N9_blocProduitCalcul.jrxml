@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="N9_blocProduitCalcul" pageWidth="400" pageHeight="842" columnWidth="400" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="com.sylob.cochise.composant.printmanager.datasource.*"/>
+	<import value="com.sylob.cochise.composant.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="SYLOB_CODE_ENTITE" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[DetailColisageManutention]]></parameterDescription>
+	</parameter>
+	<field name="idArticle" class="java.lang.String">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/article/id]]></fieldDescription>
+	</field>
+	<field name="designationArticle" class="java.lang.String">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/article/designation]]></fieldDescription>
+	</field>
+	<field name="codeArticle" class="java.lang.String">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/article/code]]></fieldDescription>
+	</field>
+	<field name="idUniteVente" class="java.lang.String">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/uniteVente/id]]></fieldDescription>
+	</field>
+	<field name="codeUniteVente" class="java.lang.String">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/uniteVente/code]]></fieldDescription>
+	</field>
+	<field name="nbDecimaleUniteVente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/uniteVente/nbDecimale]]></fieldDescription>
+	</field>
+	<field name="quantitePrepareUV" class="java.lang.String">
+		<fieldDescription><![CDATA[quantitePrepareUV/valeur]]></fieldDescription>
+	</field>
+	<field name="numeroLot" class="java.lang.String">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/detailStockLignePreparationLivraison/caracteristiqueArticleStock/lot/numero]]></fieldDescription>
+	</field>
+	<field name="idLigneCommandeVente" class="java.lang.String">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/id]]></fieldDescription>
+	</field>
+	<field name="designationLigneCommande" class="java.lang.String">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/designation]]></fieldDescription>
+	</field>
+	<field name="codeIndiceArticle" class="java.lang.String">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/detailStockLignePreparationLivraison/caracteristiqueArticleStock/indiceArticle/code]]></fieldDescription>
+	</field>
+	<field name="libelleIndiceArticle" class="java.lang.String">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/detailStockLignePreparationLivraison/caracteristiqueArticleStock/indiceArticle/libelle]]></fieldDescription>
+	</field>
+	<variable name="DECOMPTE_DISTINCT_ARTICLE" class="java.lang.Integer" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{idArticle}]]></variableExpression>
+	</variable>
+	<variable name="DECOMPTE_DISTINCT_UNITE_VENTE" class="java.lang.Integer" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{idUniteVente}]]></variableExpression>
+	</variable>
+	<variable name="DECOMPTE_DISTINCT_LOT" class="java.lang.Integer" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{numeroLot}]]></variableExpression>
+	</variable>
+	<variable name="NOMBRE_REFERENCE" class="java.lang.Integer" calculation="DistinctCount">
+		<variableExpression><![CDATA[( $F{idArticle} != null ? $F{idArticle} : $F{idLigneCommandeVente} )]]></variableExpression>
+	</variable>
+	<variable name="CODE_ARTICLE" class="java.lang.String">
+		<variableExpression><![CDATA[( $V{NOMBRE_REFERENCE}.intValue() == 1 && $V{DECOMPTE_DISTINCT_ARTICLE}.intValue() == 1 ? $F{codeArticle} : "" )]]></variableExpression>
+	</variable>
+	<variable name="CODE_UNITE_VENTE" class="java.lang.String">
+		<variableExpression><![CDATA[($V{DECOMPTE_DISTINCT_UNITE_VENTE}.intValue() == 1 ? $F{codeUniteVente}: "" )]]></variableExpression>
+	</variable>
+	<variable name="NB_DECIMALE_UNITE_VENTE" class="java.lang.Integer">
+		<variableExpression><![CDATA[($V{DECOMPTE_DISTINCT_UNITE_VENTE}.intValue() == 1 ? $F{nbDecimaleUniteVente} : null )]]></variableExpression>
+	</variable>
+	<variable name="QUANTITE_PREPAREEUV_TOTALE" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[new BigDecimal($F{quantitePrepareUV})]]></variableExpression>
+		<initialValueExpression><![CDATA[BigDecimal.ZERO]]></initialValueExpression>
+	</variable>
+	<variable name="NUMERO_LOT" class="java.lang.String">
+		<variableExpression><![CDATA[($V{NOMBRE_REFERENCE}.intValue() == 1 ? ($V{DECOMPTE_DISTINCT_LOT}.intValue() == 1 ? $F{numeroLot} : "" ) : "")]]></variableExpression>
+	</variable>
+	<variable name="DESIGNATION" class="java.lang.String">
+		<variableExpression><![CDATA[($V{NOMBRE_REFERENCE}.intValue() == 1 ?  ( $V{DECOMPTE_DISTINCT_ARTICLE}.intValue() == 1 ? $F{designationArticle} : $F{designationLigneCommande} ) : "" )]]></variableExpression>
+	</variable>
+	<variable name="INDICE_ARTICLE" class="java.lang.String">
+		<variableExpression><![CDATA[($V{NOMBRE_REFERENCE}.intValue() == 1 ? ($V{DECOMPTE_DISTINCT_INDICE}.intValue() == 1 ? $F{libelleIndiceArticle} + " (" + $F{codeIndiceArticle} + ")" : "" ) : "")]]></variableExpression>
+	</variable>
+	<variable name="DECOMPTE_DISTINCT_INDICE" class="java.lang.Integer" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{codeIndiceArticle}]]></variableExpression>
+	</variable>
+	<background>
+		<band height="1"/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

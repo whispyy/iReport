@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="blocExpeditionCalcul" pageWidth="400" pageHeight="842" columnWidth="400" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="com.sylob.cochise.composant.printmanager.datasource.*"/>
+	<import value="com.sylob.cochise.composant.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="SYLOB_CODE_ENTITE" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[DetailColisageManutention]]></parameterDescription>
+	</parameter>
+	<field name="idCommandeVente" class="java.lang.String">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/commandeVente/id]]></fieldDescription>
+	</field>
+	<field name="numeroCommande" class="java.lang.String">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/commandeVente/numeroCommandeVente]]></fieldDescription>
+	</field>
+	<field name="referenceCommande" class="java.lang.String">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/commandeVente/reference]]></fieldDescription>
+	</field>
+	<field name="dateLivraisonAcceptee" class="java.lang.Long">
+		<fieldDescription><![CDATA[detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/dateLivraisonAcceptee]]></fieldDescription>
+	</field>
+	<variable name="DECOMPTE_DISTINCT_COMMANDE_VENTE" class="java.lang.Integer" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{idCommandeVente}]]></variableExpression>
+	</variable>
+	<variable name="NUMERO_COMMANDE" class="java.lang.String">
+		<variableExpression><![CDATA[($V{DECOMPTE_DISTINCT_COMMANDE_VENTE}.intValue() == 1 ? $F{numeroCommande} : "" )]]></variableExpression>
+	</variable>
+	<variable name="REFERENCE_COMMANDE" class="java.lang.String">
+		<variableExpression><![CDATA[($V{DECOMPTE_DISTINCT_COMMANDE_VENTE}.intValue() == 1 ? $F{referenceCommande} : "" )]]></variableExpression>
+	</variable>
+	<variable name="DATE_LIVRAISON_ACCEPTEE_MIN" class="java.lang.Long" calculation="Lowest">
+		<variableExpression><![CDATA[$F{dateLivraisonAcceptee}]]></variableExpression>
+	</variable>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

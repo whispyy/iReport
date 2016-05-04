@@ -1,0 +1,1 @@
+select condition from ConditionClientEntite condition where condition.article.id='null' and condition.client.id='null'

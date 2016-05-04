@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="N9_listeEtiquetteColisage"
+		 columnCount="2"
+		 printOrder="Vertical"
+		 orientation="Landscape"
+		 pageWidth="842"
+		 pageHeight="595"
+		 columnWidth="407"
+		 columnSpacing="0"
+		 leftMargin="14"
+		 rightMargin="14"
+		 topMargin="14"
+		 bottomMargin="14"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false"
+		 whenResourceMissingType="Key">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+	<import value="com.sylob.cochise.composant.printmanager.datasource.*" />
+	<import value="com.sylob.cochise.composant.util.*" />
+
+	<style 
+		name="TableHeader"
+		isDefault="false"
+		mode="Transparent"
+		forecolor="#0033CC"
+		backcolor="#FFFFFF"
+		fill="Solid"
+		radius="0"
+		scaleImage="Clip"
+		hAlign="Left"
+		vAlign="Middle"
+		rotation="None"
+		fontName="Arial"
+		fontSize="9"
+		isBold="true"
+		isItalic="false"
+		isUnderline="false"
+		isStrikeThrough="false"
+		pdfFontName="arialbd.ttf"
+		isPdfEmbedded="true"
+		isBlankWhenNull="false"
+		markup="none"
+	>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<box leftPadding="1" rightPadding="6" topPadding="2" bottomPadding="1">					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+</box>
+	</style>
+	<style 
+		name="TableHeaderPremiereColonne"
+		isDefault="false"
+		mode="Transparent"
+		forecolor="#0033CC"
+		backcolor="#FFFFFF"
+		fill="Solid"
+		radius="0"
+		scaleImage="Clip"
+		hAlign="Left"
+		vAlign="Middle"
+		rotation="None"
+		fontName="Arial"
+		fontSize="9"
+		isBold="true"
+		isItalic="false"
+		isUnderline="false"
+		isStrikeThrough="false"
+		pdfFontName="arialbd.ttf"
+		isPdfEmbedded="true"
+		isBlankWhenNull="false"
+		markup="none"
+	>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<box leftPadding="1" rightPadding="6" topPadding="2" bottomPadding="1">					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+</box>
+	</style>
+	<style 
+		name="TableHeaderDerniereColonne"
+		isDefault="false"
+		mode="Transparent"
+		forecolor="#0033CC"
+		backcolor="#FFFFFF"
+		fill="Solid"
+		radius="0"
+		scaleImage="Clip"
+		hAlign="Left"
+		vAlign="Middle"
+		rotation="None"
+		fontName="Arial"
+		fontSize="9"
+		isBold="true"
+		isItalic="false"
+		isUnderline="false"
+		isStrikeThrough="false"
+		pdfFontName="arialbd.ttf"
+		isPdfEmbedded="true"
+		isBlankWhenNull="false"
+		markup="none"
+	>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<box leftPadding="1" rightPadding="6" topPadding="2" bottomPadding="1">					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+</box>
+	</style>
+	<style 
+		name="TableDataPremiereColonne"
+		isDefault="false"
+		mode="Transparent"
+		forecolor="#000000"
+		backcolor="#FFFFFF"
+		fill="Solid"
+		radius="0"
+		scaleImage="Clip"
+		hAlign="Left"
+		vAlign="Middle"
+		rotation="None"
+		fontName="Arial"
+		fontSize="10"
+		isBold="true"
+		isItalic="false"
+		isUnderline="false"
+		isStrikeThrough="false"
+		pdfFontName="arialbd.ttf"
+		isPdfEmbedded="true"
+		isBlankWhenNull="true"
+		markup="none"
+	>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<box leftPadding="1" rightPadding="6" topPadding="2" bottomPadding="1">					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+</box>
+	</style>
+	<style 
+		name="TableData"
+		isDefault="false"
+		mode="Transparent"
+		forecolor="#000000"
+		backcolor="#FFFFFF"
+		fill="Solid"
+		radius="0"
+		scaleImage="Clip"
+		hAlign="Left"
+		vAlign="Middle"
+		rotation="None"
+		fontName="Arial"
+		fontSize="10"
+		isBold="false"
+		isItalic="false"
+		isUnderline="false"
+		isStrikeThrough="false"
+		pdfFontName="arial.ttf"
+		isPdfEmbedded="true"
+		isBlankWhenNull="true"
+		markup="none"
+	>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<box leftPadding="1" rightPadding="6" topPadding="2" bottomPadding="1">					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+</box>
+	</style>
+	<style 
+		name="TableDataDerniereColonne"
+		isDefault="false"
+		mode="Transparent"
+		forecolor="#000000"
+		backcolor="#FFFFFF"
+		fill="Solid"
+		radius="0"
+		scaleImage="Clip"
+		hAlign="Left"
+		vAlign="Middle"
+		rotation="None"
+		fontName="Arial"
+		fontSize="10"
+		isBold="false"
+		isItalic="false"
+		isUnderline="false"
+		isStrikeThrough="false"
+		pdfFontName="arial.ttf"
+		isPdfEmbedded="true"
+		isBlankWhenNull="true"
+		markup="none"
+	>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<box leftPadding="1" rightPadding="1" topPadding="2" bottomPadding="1">					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+</box>
+	</style>
+
+	<parameter name="SYLOB_CODE_ENTITE" isForPrompting="false" class="java.lang.String">
+		<parameterDescription><![CDATA[ColisageManutention]]></parameterDescription>
+	</parameter>
+
+	<field name="logoSociete" class="java.lang.Object">
+		<fieldDescription><![CDATA[sylob:logoSociete()]]></fieldDescription>
+	</field>
+	<field name="dateExpedition" class="java.lang.Long">
+		<fieldDescription><![CDATA[../parametre/dateExpedition]]></fieldDescription>
+	</field>
+	<field name="codeUniteGestionPoids" class="java.lang.String">
+		<fieldDescription><![CDATA[../listeParametreSociete[code="UNITE_GESTION_POIDS"]/valeur/code]]></fieldDescription>
+	</field>
+	<field name="nbDecimaleGestionPoids" class="java.lang.Integer">
+		<fieldDescription><![CDATA[../listeParametreSociete[code="UNITE_GESTION_POIDS"]/valeur/nbDecimale]]></fieldDescription>
+	</field>
+	<field name="codeLangue" class="java.lang.String">
+		<fieldDescription><![CDATA[listeDetailColisageManutention[1]/detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/commandeVente/client/langue/code]]></fieldDescription>
+	</field>
+	<field name="codePays" class="java.lang.String">
+		<fieldDescription><![CDATA[listeDetailColisageManutention[1]/detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/commandeVente/adresseLivraison/ville/pays/code]]></fieldDescription>
+	</field>
+	<field name="idClient" class="java.lang.String">
+		<fieldDescription><![CDATA[listeDetailColisageManutention[1]/detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/commandeVente/client/id]]></fieldDescription>
+	</field>
+	<field name="idAdresse" class="java.lang.String">
+		<fieldDescription><![CDATA[listeDetailColisageManutention[1]/detailLignePreparationLivraison/lignePreparationLivraison/ligneCommandeVente/commandeVente/adresseLivraison/id]]></fieldDescription>
+	</field>
+	<field name="getGestionMultiIndice" class="java.lang.Integer">
+		<fieldDescription><![CDATA[../listeParametreSociete[code="GESTION_MULTI_INDICE_ARTICLE"]/valeur]]></fieldDescription>
+	</field>
+
+
+		<group  name="ClientAdresse" >
+			<groupExpression><![CDATA[$F{idClient} + $F{idAdresse}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="20"  isSplitAllowed="true" >
+				<subreport  isUsingCache="true">
+					<reportElement
+						mode="Opaque"
+						x="-15"
+						y="0"
+						width="829"
+						height="20"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="subreport-4"/>
+					<subreportParameter  name="REPORT_RESOURCE_BUNDLE">
+						<subreportParameterExpression><![CDATA[$P{REPORT_RESOURCE_BUNDLE}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[IReportUtil.subDataSource($P{REPORT_DATA_SOURCE}, "../societe")]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA["dm1/commun/PpageHeaderDocumentInternePaysage.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="50"  isSplitAllowed="true" >
+				<subreport  isUsingCache="true">
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="0"
+						width="404"
+						height="50"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="subreport-8"/>
+					<subreportParameter  name="UNITE_POIDS">
+						<subreportParameterExpression><![CDATA[$F{codeUniteGestionPoids}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter  name="NB_DECIMALE_UNITE_POIDS">
+						<subreportParameterExpression><![CDATA[$F{nbDecimaleGestionPoids}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter  name="DATE_EXPEDITION">
+						<subreportParameterExpression><![CDATA[$F{dateExpedition}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter  name="REPORT_RESOURCE_BUNDLE">
+						<subreportParameterExpression><![CDATA[( $F{codeLangue} != null ? CochiseResourceBundle.getPublicationBundle(new Locale($F{codeLangue}, $F{codePays})) : $P{REPORT_RESOURCE_BUNDLE})]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter  name="GESTION_MULTI_INDICE">
+						<subreportParameterExpression><![CDATA[new Boolean($F{getGestionMultiIndice}.intValue()>0)]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter  name="LOGO_SOCIETE">
+						<subreportParameterExpression><![CDATA[$F{logoSociete}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[IReportUtil.subDataSource($P{REPORT_DATA_SOURCE}, ".")]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA["dm9/123/N9_etiquetteColisage.jasper"]]></subreportExpression>
+				</subreport>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Group" evaluationGroup="ClientAdresse"  hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="200"
+						y="0"
+						width="50"
+						height="50"
+						key="totalCompteur-1"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="18" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$V{ClientAdresse_COUNT}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="150"
+						y="0"
+						width="50"
+						height="50"
+						key="compteur-1"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="18" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$V{ClientAdresse_COUNT} +  "/"]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="17"  isSplitAllowed="true" >
+				<subreport  isUsingCache="true">
+					<reportElement
+						mode="Opaque"
+						x="-15"
+						y="0"
+						width="829"
+						height="17"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="subreport-6"/>
+					<subreportParameter  name="REPORT_RESOURCE_BUNDLE">
+						<subreportParameterExpression><![CDATA[$P{REPORT_RESOURCE_BUNDLE}]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[IReportUtil.subDataSource($P{REPORT_DATA_SOURCE}, "../utilisateurActif")]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA["dm1/commun/PpageFooterDocumentInterne.jasper"]]></subreportExpression>
+				</subreport>
+				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="720"
+						y="0"
+						width="60"
+						height="17"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="textField-5"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font fontName="Arial" pdfFontName="ariali.ttf" size="8" isBold="false" isItalic="true" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$R{page}+" " + $V{PAGE_NUMBER} + "/"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="780"
+						y="0"
+						width="20"
+						height="17"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="textField-6"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font fontName="Arial" pdfFontName="ariali.ttf" size="8" isBold="false" isItalic="true" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["" + $V{PAGE_NUMBER} + ""]]></textFieldExpression>
+				</textField>
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

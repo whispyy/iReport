@@ -1,0 +1,11 @@
+<iReportPlugin 	
+	name="SylobDataSourcePlugin"
+	class="com.sylob.cochise.composant.printmanager.ireport.SylobDataSourcePlugin"
+	loadOnStartup="true"
+	hide = "true"
+	configurable = "false">
+	
+	<IconFile>/it/businesslogic/ireport/icons/menu/new.gif</IconFile>
+	<Description>Sylob Datasource</Description>
+
+</iReportPlugin>

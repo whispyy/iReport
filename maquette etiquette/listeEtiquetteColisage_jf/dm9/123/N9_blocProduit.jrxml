@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="N9_blocProduit" pageWidth="400" pageHeight="842" columnWidth="395" leftMargin="5" rightMargin="0" topMargin="5" bottomMargin="5">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="com.sylob.cochise.composant.printmanager.datasource.*"/>
+	<import value="com.sylob.cochise.composant.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="UNITE_POIDS" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="NB_DECIMALE_UNITE_POIDS" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="GESTION_MULTI_INDICE" class="java.lang.Boolean" isForPrompting="false"/>
+	<parameter name="SYLOB_CODE_ENTITE" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[ColisageManutention]]></parameterDescription>
+	</parameter>
+	<field name="poidsNet" class="java.lang.String">
+		<fieldDescription><![CDATA[poidsNet/valeur]]></fieldDescription>
+	</field>
+	<field name="poidsBrut" class="java.lang.String">
+		<fieldDescription><![CDATA[poidsBrut/valeur]]></fieldDescription>
+	</field>
+	<variable name="CODE_PRODUIT" class="java.lang.String"/>
+	<variable name="DESIGNATION_PRODUIT" class="java.lang.String"/>
+	<variable name="DECOMPTE_DISTINCT_ARTICLE" class="java.lang.Integer"/>
+	<variable name="QUANTITE_PREPAREEUV_TOTALE" class="java.math.BigDecimal"/>
+	<variable name="CODE_UNITE_VENTE" class="java.lang.String"/>
+	<variable name="NB_DECIMALE_UNITE_VENTE" class="java.lang.Integer"/>
+	<variable name="DECOMPTE_DISTINCT_LOT" class="java.lang.Integer"/>
+	<variable name="NUMERO_LOT" class="java.lang.String"/>
+	<variable name="NOMBRE_REFERENCE" class="java.lang.Integer"/>
+	<variable name="INDICE_ARTICLE" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="120">
+			<subreport isUsingCache="true">
+				<reportElement key="calculInformationsAAfficher-1" mode="Transparent" x="309" y="30" width="79" height="54" isRemoveLineWhenBlank="true"/>
+				<dataSourceExpression><![CDATA[IReportUtil.subDataSource($P{REPORT_DATA_SOURCE}, "listeDetailColisageManutention[quantitePrepare/valeur!=0]")]]></dataSourceExpression>
+				<returnValue subreportVariable="CODE_ARTICLE" toVariable="CODE_PRODUIT"/>
+				<returnValue subreportVariable="DESIGNATION" toVariable="DESIGNATION_PRODUIT"/>
+				<returnValue subreportVariable="DECOMPTE_DISTINCT_ARTICLE" toVariable="DECOMPTE_DISTINCT_ARTICLE"/>
+				<returnValue subreportVariable="CODE_UNITE_VENTE" toVariable="CODE_UNITE_VENTE"/>
+				<returnValue subreportVariable="NB_DECIMALE_UNITE_VENTE" toVariable="NB_DECIMALE_UNITE_VENTE"/>
+				<returnValue subreportVariable="QUANTITE_PREPAREEUV_TOTALE" toVariable="QUANTITE_PREPAREEUV_TOTALE"/>
+				<returnValue subreportVariable="NUMERO_LOT" toVariable="NUMERO_LOT"/>
+				<returnValue subreportVariable="NOMBRE_REFERENCE" toVariable="NOMBRE_REFERENCE"/>
+				<returnValue subreportVariable="INDICE_ARTICLE" toVariable="INDICE_ARTICLE"/>
+				<subreportExpression class="java.lang.String"><![CDATA["dm9/123/N9_blocProduitCalcul.jasper"]]></subreportExpression>
+			</subreport>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement key="textField-codeProduit" mode="Transparent" x="0" y="30" width="300" height="15" isRemoveLineWhenBlank="true" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( IReportUtil.isNotEmpty($V{CODE_PRODUIT}) ?  $R{publierEtiquetteColisage.codeProduit} + " : "  + $V{CODE_PRODUIT}: "" )]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement key="textField-designationProduit" mode="Transparent" x="0" y="15" width="300" height="15" isRemoveLineWhenBlank="true" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( IReportUtil.isNotEmpty($V{DESIGNATION_PRODUIT}) ?  $R{publierEtiquetteColisage.designationProduit} + " : "  + $V{DESIGNATION_PRODUIT}: "" )]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement key="textField-nombreReference" mode="Transparent" x="0" y="0" width="300" height="15" isRemoveLineWhenBlank="true" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $V{NOMBRE_REFERENCE}.intValue() > 1  ?  $R{publierEtiquetteColisage.nombreReference} + " : "  + $V{NOMBRE_REFERENCE} : "" )]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement key="textField-poidsNet" mode="Transparent" x="0" y="90" width="300" height="15" isRemoveLineWhenBlank="true" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{publierEtiquetteColisage.poidsNet} + " : " + IReportUtil.formatNumber($F{poidsNet}, $P{NB_DECIMALE_UNITE_POIDS}, $P{REPORT_LOCALE}) + " " + $P{UNITE_POIDS}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement key="textField-poidsBrut" mode="Transparent" x="0" y="105" width="300" height="15" isRemoveLineWhenBlank="true" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{publierEtiquetteColisage.poidsBrut} + " : " + IReportUtil.formatNumber($F{poidsBrut}, $P{NB_DECIMALE_UNITE_POIDS}, $P{REPORT_LOCALE}) + " " + $P{UNITE_POIDS}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement key="textField-quantite" mode="Transparent" x="0" y="75" width="300" height="15" isRemoveLineWhenBlank="true" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( IReportUtil.isNotEmpty($V{CODE_UNITE_VENTE}) ?  $R{publierEtiquetteColisage.quantite} + " : "  + IReportUtil.formatNumber($V{QUANTITE_PREPAREEUV_TOTALE}, $V{NB_DECIMALE_UNITE_VENTE}, $P{REPORT_LOCALE}) + " " + $V{CODE_UNITE_VENTE}: "" )]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement key="textField-numeroLot" mode="Transparent" x="0" y="60" width="300" height="15" isRemoveLineWhenBlank="true" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( IReportUtil.isNotEmpty($V{NUMERO_LOT}) ?  $R{publierEtiquetteColisage.numeroLot} + " : "  + $V{NUMERO_LOT}: "" )]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="true" hyperlinkType="None">
+				<reportElement key="textField-1" mode="Transparent" x="0" y="45" width="300" height="15" isRemoveLineWhenBlank="true" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( IReportUtil.isNotEmpty($V{INDICE_ARTICLE}) && $P{GESTION_MULTI_INDICE} ?  $R{caracteristiqueArticleStock.indiceArticle} + " : "  + $V{INDICE_ARTICLE}: "" )]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
